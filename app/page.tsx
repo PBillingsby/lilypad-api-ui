@@ -23,6 +23,7 @@ export default function Home() {
       }
 
       const data = await response.json();
+      debugger
       setOutput(data);
       setLoading(false);
     } catch (error) {
@@ -35,7 +36,6 @@ export default function Home() {
     setInputValue("");
   }
 
-  console.log(output)
   return (
     <main className="flex flex-col items-center font-jakarta h-screen">
       <p className="my-4 flex items-center text-3xl">
