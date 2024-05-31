@@ -32,12 +32,12 @@ export async function POST(req: NextRequest) {
     if (!pk) {
       throw new Error('PK environment variable is not set');
     }
-    const module = "ollama-pipeline:llama3-8b-lilypad1";
-
+    // const module = "ollama-pipeline:llama3-8b-lilypad1"; // uncomment to use Llama3
+    const module = "cowsay:v0.0.3"
     const body = {
       pk: pk,
       module: module,
-      inputs: `-i Prompt='${inputs}'`,
+      inputs: `-i Message='${inputs}'`,
       opts: { stream: true }
     };
 
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
         'Accept': 'application/json'
       },
       data: body,
-      timeout: 180000 // 3 minutes timeout
+      // timeout: 180000 // 3 minutes timeout // Uncomment to add timeout so the API doesnt fail after calls
     };
 
     console.log('Request options:', requestOptions);
